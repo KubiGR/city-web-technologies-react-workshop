@@ -19,8 +19,7 @@ function Clock() {
 
   return (
     <div>
-      <h1>Hello, world!</h1>
-      <h2>It is {date.toLocaleTimeString()}.</h2>
+      <h2>It's {date.toLocaleTimeString()}.</h2>
     </div>
   );
 }
