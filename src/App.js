@@ -11,7 +11,6 @@ const App = () => {
   const [completedTodoList, setCompletedTodoList] = useState(
     JSON.parse(localStorage.getItem("completedTodoList")) || []
   );
-
   const [idCounter, setIdCounter] = useState(
     JSON.parse(localStorage.getItem("idCounter")) || 0
   );
@@ -39,12 +38,6 @@ const App = () => {
   const removeTodo = (todo) => {
     const newTodoList = todoList.filter((e) => todo.id !== e.id);
     setTodoList(newTodoList);
-  };
-
-  const editTodo = (todo, newText) => {
-    const todoToEdit = todoList.find((e) => todo.id === e.id);
-    todoToEdit.text = newText;
-    setTodoList(todoList.slice());
   };
 
   const completeTodo = (todo) => {
@@ -75,7 +68,6 @@ const App = () => {
               todo={todo}
               removeTodo={removeTodo}
               completeTodo={completeTodo}
-              editTodo={editTodo}
             />
           ))}
           {completedTodoList.map((todo) => (
