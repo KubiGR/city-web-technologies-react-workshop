@@ -18,9 +18,6 @@ const App = () => {
 
   return (
     <div className="app">
-      <div style={{ position: "absolute" }}>
-        <Clock />
-      </div>
       <div className="list-wrapper">
         <NewTodoForm addTodo={addTodo} />
         <div className="list-scrollable">
