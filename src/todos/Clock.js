@@ -1,26 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function Clock() {
   const [date, setDate] = useState(new Date());
-  let timerID;
+  const timerIDRef = useRef();
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    timerID = setInterval(() => tick(), 1000);
+    function tick() {
+      setDate(new Date());
+    }
+
+    timerIDRef.current = setInterval(() => tick(), 1000);
 
     return () => {
-      clearInterval(timerID);
+      clearInterval(timerIDRef.current);
     };
   });
 
-  function tick() {
-    setDate(new Date());
-  }
-
   return (
     <div>
-      <h1>Hello, world!</h1>
-      <h2>It is {date.toLocaleTimeString()}.</h2>
+      <h2>It's {date.toLocaleTimeString()}.</h2>
     </div>
   );
 }

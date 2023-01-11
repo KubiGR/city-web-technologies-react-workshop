@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import NewTodoForm from "./todos/NewTodoForm";
 import TodoListItem from "./todos/TodoListItem";
 import CompletedTodoListItem from "./todos/CompletedTodoListItem";
+// import Clock from "./todos/Clock";
 
 const App = () => {
   const [todoList, setTodoList] = useState(
@@ -66,6 +67,9 @@ const App = () => {
 
   return (
     <div className="app">
+      {/* <div style={{ position: "absolute" }}>
+        <Clock />
+      </div> */}
       <div className="list-wrapper">
         <NewTodoForm addTodo={addTodo} />
         <div className="list-scrollable">
