@@ -1,6 +1,5 @@
 import NewTodoForm from "./todos/NewTodoForm";
 import TodoListItem from "./todos/TodoListItem";
-import Clock from "./todos/Clock";
 import { useState } from "react";
 
 const App = () => {
