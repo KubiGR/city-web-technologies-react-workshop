@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import NewTodoForm from "./todos/NewTodoForm";
 import TodoListItem from "./todos/TodoListItem";
 import CompletedTodoListItem from "./todos/CompletedTodoListItem";
+import githubApi from "./services/githubApi";
 // import Clock from "./todos/Clock";
 
 const App = () => {
@@ -18,12 +19,27 @@ const App = () => {
   );
 
   useEffect(() => {
+    githubApi.getGistState().then((data) => {
+      console.log(`🐒L`, data);
+    });
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem("todoList", JSON.stringify(todoList));
     localStorage.setItem("idCounter", idCounter);
     localStorage.setItem(
       "completedTodoList",
       JSON.stringify(completedTodoList)
     );
+
+    const stateObject = {
+      todoList,
+      idCounter,
+      completedTodoList,
+    };
+
+    githubApi.updateGistState(stateObject);
+
     document.title = `Todos: ${todoList.length}`;
   });
 
