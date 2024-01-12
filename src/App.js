@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import NewTodoForm from "./todos/NewTodoForm";
 import TodoListItem from "./todos/TodoListItem";
 import CompletedTodoListItem from "./todos/CompletedTodoListItem";
-import githubApi from "./services/githubApi";
+import { githubApi } from "./services/githubApi";
 // import Clock from "./todos/Clock";
 
 const App = () => {

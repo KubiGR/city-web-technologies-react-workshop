@@ -52,4 +52,4 @@ class GithubApi {
 
 const githubApi = new GithubApi();
 
-export default githubApi;
+export { githubApi };
