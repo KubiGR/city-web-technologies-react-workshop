@@ -2,10 +2,13 @@ import React, { useContext } from "react";
 import svgDelete from "./../assets/delete.svg";
 import svgEdit from "./../assets/edit.svg";
 import { useState, useEffect, useRef } from "react";
-import { AppContext } from "../App";
+import { TodosStoreContext } from "../App";
+import { observer } from "mobx-react-lite";
 
-export function TodoListItem({ todo }) {
-  const { removeTodo, editTodo } = useContext(AppContext);
+function _TodoListItem({ todo }) {
+  const todosStore = useContext(TodosStoreContext);
+  const { removeTodo, editTodo } = todosStore;
+
   const [editMode, setEditMode] = useState(false);
   const [editInput, setEditInput] = useState(todo.text);
   const inputElementRef = useRef(null);
@@ -60,3 +63,5 @@ export function TodoListItem({ todo }) {
     </div>
   );
 }
+
+export const TodoListItem = observer(_TodoListItem);

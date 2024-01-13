@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { TodosStoreContext } from "../App";
+import { observer } from "mobx-react-lite";
 
-export function NewTodoForm({ addTodo }) {
+function _NewTodoForm() {
+  const todosStore = useContext(TodosStoreContext);
+  const { addTodo } = todosStore;
+
   const [inputValue, setInputValue] = useState("");
   const inputElementRef = useRef(null);
 
@@ -47,3 +52,5 @@ export function NewTodoForm({ addTodo }) {
     </div>
   );
 }
+
+export const NewTodoForm = observer(_NewTodoForm);

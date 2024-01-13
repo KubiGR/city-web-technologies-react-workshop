@@ -1,6 +1,13 @@
+import { observer } from "mobx-react-lite";
+import { TodosStoreContext } from "../App";
 import { TodoListItem } from "./TodoListItem";
-import React from "react";
+import React, { useContext } from "react";
 
-export function TodoList({ todoList }) {
-  return todoList.map((todo) => <TodoListItem key={todo.id} todo={todo} />);
+function _TodoList() {
+  const todosStore = useContext(TodosStoreContext);
+  const { todos } = todosStore;
+
+  return todos.map((todo) => <TodoListItem key={todo.id} todo={todo} />);
 }
+
+export const TodoList = observer(_TodoList);
