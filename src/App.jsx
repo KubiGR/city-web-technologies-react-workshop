@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 
 import { NewTodoForm } from "./components/NewTodoForm";
 import { githubApi } from "./services/githubApi";
 import React from "react";
 import { TodoList } from "./components/TodoList";
+
+export const AppContext = createContext(null);
 
 export function App() {
   useEffect(() => {
@@ -61,11 +63,9 @@ export function App() {
     <div className="app">
       <div className="list-wrapper">
         <NewTodoForm addTodo={addTodo} />
-        <TodoList
-          todoList={todoList}
-          removeTodo={removeTodo}
-          editTodo={editTodo}
-        />
+        <AppContext.Provider value={{ removeTodo, editTodo }}>
+          <TodoList todoList={todoList} />
+        </AppContext.Provider>
       </div>
     </div>
   );

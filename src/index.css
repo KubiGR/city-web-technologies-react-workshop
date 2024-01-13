@@ -86,48 +86,6 @@
   background-color: hsl(13, 57%, 30%);
 }
 
-.inner-completed-todo-item-container {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 8px;
-  padding: 16px;
-  position: relative;
-  color: antiquewhite;
-  overflow: hidden;
-}
-
-.completed-todo-item-container {
-  display: flex;
-  justify-content: flex-end;
-  border-radius: 8px;
-  margin: 0.5rem 0;
-  position: relative;
-  box-shadow: 0 4px 8px 1px #15091b;
-  color: antiquewhite;
-}
-
-.inner-completed-todo-item-container:after {
-  content: "";
-  position: absolute;
-  margin: -60px;
-  width: 80px;
-  height: 80px;
-  transform: rotate(45deg);
-  background-color: hsl(113, 18%, 35%);
-}
-
-.completed-todo-check-icon {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  z-index: 1;
-  filter: invert(87%) sepia(6%) saturate(1474%) hue-rotate(328deg)
-    brightness(112%) contrast(96%);
-  width: 1rem;
-  height: 1rem;
-}
-
 .new-todo-form {
   display: flex;
   gap: 10px;

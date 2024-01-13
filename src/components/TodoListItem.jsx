@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import svgDelete from "./../assets/delete.svg";
 import svgEdit from "./../assets/edit.svg";
 import { useState, useEffect, useRef } from "react";
+import { AppContext } from "../App";
 
-export function TodoListItem({ todo, removeTodo, editTodo }) {
+export function TodoListItem({ todo }) {
+  const { removeTodo, editTodo } = useContext(AppContext);
   const [editMode, setEditMode] = useState(false);
   const [editInput, setEditInput] = useState(todo.text);
   const inputElementRef = useRef(null);
