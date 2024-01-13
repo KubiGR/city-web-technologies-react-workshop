@@ -1,6 +1,7 @@
+import React from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
 
-const NewTodoForm = ({ addTodo }) => {
+export function NewTodoForm({ addTodo }) {
   const [inputValue, setInputValue] = useState("");
   const inputElementRef = useRef(null);
 
@@ -45,6 +46,4 @@ const NewTodoForm = ({ addTodo }) => {
       </button>
     </div>
   );
-};
-
-export default NewTodoForm;
+}

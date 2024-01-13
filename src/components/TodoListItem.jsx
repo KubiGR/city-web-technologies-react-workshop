@@ -1,9 +1,9 @@
-import svgCheck from "./../assets/check-mark.svg";
+import React from "react";
 import svgDelete from "./../assets/delete.svg";
 import svgEdit from "./../assets/edit.svg";
 import { useState, useEffect, useRef } from "react";
 
-const TodoListItem = ({ todo, removeTodo, completeTodo, editTodo }) => {
+export function TodoListItem({ todo, removeTodo, editTodo }) {
   const [editMode, setEditMode] = useState(false);
   const [editInput, setEditInput] = useState(todo.text);
   const inputElementRef = useRef(null);
@@ -43,12 +43,6 @@ const TodoListItem = ({ todo, removeTodo, completeTodo, editTodo }) => {
       )}
       <div className="todo-buttons-container">
         <button
-          onClick={() => completeTodo(todo)}
-          className="button complete-button"
-        >
-          <img src={svgCheck} alt="Complete todo" className="icon" />
-        </button>
-        <button
           onClick={() => setEditMode(true)}
           className="button edit-button"
         >
@@ -63,6 +57,4 @@ const TodoListItem = ({ todo, removeTodo, completeTodo, editTodo }) => {
       </div>
     </div>
   );
-};
-
-export default TodoListItem;
+}
