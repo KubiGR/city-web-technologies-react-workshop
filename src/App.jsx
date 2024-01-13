@@ -1,30 +1,43 @@
 import { createContext } from "react";
-
-import { NewTodoForm } from "./components/NewTodoForm";
 import React from "react";
-import { TodoList } from "./components/TodoList";
 import { todosStore } from "./store/todosStore";
-import { observer } from "mobx-react-lite";
+import {
+  createBrowserRouter,
+  Link,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom";
+import { RootPage } from "./pages/RootPage";
+import ErrorPage from "./pages/ErrorPage";
+import ContactPage from "./pages/ContactPage";
+import { OutletPage } from "./pages/OutletPage";
 
 export const TodosStoreContext = createContext(null);
 
-function _App() {
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <OutletPage />,
+    children: [
+      {
+        path: "/",
+        element: <RootPage />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
+      },
+    ],
+    errorElement: <ErrorPage />,
+  },
+]);
+
+export function App() {
   return (
     <TodosStoreContext.Provider value={todosStore}>
       <div className="app">
-        {todosStore.hasFetchedData ? (
-          <div className="list-wrapper">
-            <NewTodoForm />
-            <TodoList />
-          </div>
-        ) : (
-          <h1 style={{ textAlign: "center", color: "bisque" }}>
-            Loading todos...
-          </h1>
-        )}
+        <RouterProvider router={router} />
       </div>
     </TodosStoreContext.Provider>
   );
 }
-
-export const App = observer(_App);
